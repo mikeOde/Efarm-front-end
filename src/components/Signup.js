@@ -1,18 +1,60 @@
-import {
-  Button,
-  Grid,
-  Paper,
-  TextField,
-} from "@mui/material";
+import { useRef, useState } from "react";
+import { Button, Grid, Paper, TextField } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import loginLogo from "./images/loginLogo.png";
+import api from "../service/api";
 
 function Signup() {
-  const headerStyle = { marginTop: 10,  color:"#72B750" };
+  const firstNameInputRef = useRef();
+  const lastNameInputRef = useRef();
+  const userTypeInputRef = useRef();
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+  const [errors, setErrors] = useState([]);
+
+  function signupHandler(event) {
+    event.preventDefault();
+    const enteredFirstName = firstNameInputRef.current.value;
+    const enteredLastName = lastNameInputRef.current.value;
+    const enteredUserType = userTypeInputRef.current.value;
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
+    const signupData = {
+      first_name: enteredFirstName,
+      last_name: enteredLastName,
+      user_type_id: enteredUserType,
+      email: enteredEmail,
+      password: enteredPassword,
+    };
+
+    api
+      .checkSignup(signupData, {
+        headers: {
+          Accept: "application/json",
+          "content-type": "application/json",
+        },
+      })
+      .then((response) => {
+        if (response.data.status) {
+          alert("Account is successfully created");
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data.errors);
+        if (enteredEmail === "" || enteredPassword === "") {
+          setErrors(error.response.data.errors);
+          console.log(errors);
+        } else {
+          alert("Email exists already");
+        }
+      });
+  }
+
+  const headerStyle = { marginTop: 10, color: "#72B750" };
   const paperStyle = {
     padding: 20,
     maxWidth: 380,
@@ -27,12 +69,13 @@ function Signup() {
         <h3 style={brandStyle}>Efarm</h3>
         <h2 style={headerStyle}>Sign Up</h2>
       </Grid>
-      <form>
+      <form onSubmit={signupHandler}>
         <TextField
           sx={{ paddingBottom: "10px" }}
           label="First Name"
           type="text"
           placeholder="Enter your first name"
+          inputRef={firstNameInputRef}
           variant="standard"
           color="success"
           size="small"
@@ -44,6 +87,7 @@ function Signup() {
           label="Last Name"
           type="text"
           placeholder="Enter your last name"
+          inputRef={lastNameInputRef}
           variant="standard"
           color="success"
           size="small"
@@ -65,13 +109,25 @@ function Signup() {
             name="user-type"
           >
             <FormControlLabel
-              value="customer"
-              control={<Radio color="success" size="small" />}
+              value="0" // 0 for customers
+              control={
+                <Radio
+                  inputRef={userTypeInputRef}
+                  color="success"
+                  size="small"
+                />
+              }
               label="Customer"
             />
             <FormControlLabel
-              value="farmer"
-              control={<Radio color="success" size="small" />}
+              value="1" // 1 for farmers
+              control={
+                <Radio
+                  inputRef={userTypeInputRef}
+                  color="success"
+                  size="small"
+                />
+              }
               label="Farmer"
             />
           </RadioGroup>
@@ -81,6 +137,7 @@ function Signup() {
           label="Email"
           type="email"
           placeholder="Enter your email"
+          inputRef={emailInputRef}
           variant="standard"
           color="success"
           size="small"
@@ -92,17 +149,7 @@ function Signup() {
           label="Password"
           type="password"
           placeholder="Create a password"
-          variant="standard"
-          color="success"
-          size="small"
-          fullWidth
-          required
-        />
-        <TextField
-          sx={{ paddingBottom: "10px" }}
-          label="Confirm Password"
-          type="password"
-          placeholder="Confirm your password"
+          inputRef={passwordInputRef}
           variant="standard"
           color="success"
           size="small"
@@ -113,6 +160,7 @@ function Signup() {
           color="success"
           sx={{ backgroundColor: "#72b750", margin: "10px 0px" }}
           variant="contained"
+          type="submit"
           fullWidth
         >
           Sign Up

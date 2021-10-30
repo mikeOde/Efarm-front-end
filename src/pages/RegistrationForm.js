@@ -81,7 +81,7 @@ function RegistrationForm() {
             <Login />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <Signup />
+            <Signup/>
           </TabPanel>
         </SwipeableViews>
       </Box>
