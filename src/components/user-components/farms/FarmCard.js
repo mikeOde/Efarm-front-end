@@ -14,9 +14,8 @@ function FarmCard(props) {
   const history = useHistory();
   function renderFarm() {
     const farmId=props.id;
-    // history.replace chamges the url Path
     // generatePath dynamically adds the id to the URL
-    history.replace(generatePath("/farm/:farmId",{farmId}));
+    history.push(generatePath("/farm/:farmId",{farmId}));
   }
   return (
     <Grid item xs={12} sm={6} lg={4}>

@@ -1,49 +1,31 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import AddItemButton from "../../components/ui/AddItemButton";
 import ItemList from "../../components/ui/ItemList";
 import AdminLayout from "../../components/layout/admin-layout/AdminLayout";
+import api from "../../service/api";
 
 function Vegetables() {
-  const DUMMY_DATA = [
-    {
-      id: "1",
-      name: "Cucumbers",
-      image:
-        "https://cdn.plantssparkjoy.com/wp-content/uploads/2021/09/02071046/growing-cucumbers-with-plants-spark-joy.jpeg",
-      price: "$12",
-      description:
-        "These Cucumbers are raised outdoors and fed organic fertilizers only",
-      quantity: "50kg",
-    },
-    {
-      id: "2",
-      name: "Tomatoes",
-      image:
-        "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-      price: "$15",
-      description:
-        "National tomatoes outdoor drown on 1500m elevation with minimum pesticides",
-      quantity: "41kg",
-    },
-    {
-      id: "3",
-      name: "Potatoes",
-      image:
-        "https://www.vanmeuwen.com/static-images/master/static-images/how-to-grow-potatoes/how-to-plant-grow-potatoes.jpg",
-      price: "$10",
-      description: "Medium sized potatoes, with no additional fertilizers",
-      quantity: "90kg",
-    },
-    {
-      id: "4",
-      name: "Onions",
-      image:
-        "https://jainsusa.com/wp-content/uploads/2015/02/5tips_to_grow_great_onions.jpg",
-      price: "$12",
-      description: "Round reddish onions that are fertilizer fed",
-      quantity: "70",
-    },
-  ];
+  const history = useHistory();
+  const [fetchedVegetables, setFetchedVegetables] = useState([]);
+  const allVegetables = () => {
+    api
+      .getFarmerVegetables()
+      .then((response) => {
+        console.log(response);
+        setFetchedVegetables(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        history.push("/");
+        window.location.reload();
+      });
+  };
+  useEffect(() => {
+    allVegetables();
+  }, []);
+  console.log(fetchedVegetables);
 
   const formData = {
     title: "ADD VEGETABLES",
@@ -61,7 +43,7 @@ function Vegetables() {
 
   return (
     <AdminLayout>
-      <ItemList items={DUMMY_DATA} />
+      <ItemList items={fetchedVegetables} />
       <AddItemButton data={formData} />
     </AdminLayout>
   );

@@ -7,7 +7,7 @@ function AddItemForm(props) {
     <div className={classes.formContainer}>
     <form className={classes.form}>
       <div className={classes.formTitle}>
-        <h4>{props.vegetableData.title}</h4>
+        <h4>{props.itemData.title}</h4>
       </div>
       <div className={classes.closeAction}>
         <IconButton 
@@ -21,49 +21,49 @@ function AddItemForm(props) {
       </div>
 
       <div className={classes.control}>
-        <label htmlFor="name">{props.vegetableData.nameLabel}</label>
+        <label htmlFor="name">{props.itemData.nameLabel}</label>
         {/* htmlFor is the equival ent of for in regular html and it points to the id */}
         {/* of the input target */}
         <input
-          placeholder={props.vegetableData.namePlaceHolder}
+          placeholder={props.itemData.namePlaceHolder}
           type="text"
           required
           id="name"
         />
       </div>
       <div className={classes.control}>
-        <label htmlFor="quantity">{props.vegetableData.quantityLabel}</label>
+        <label htmlFor="quantity">{props.itemData.quantityLabel}</label>
         <input
-          placeholder={props.vegetableData.quantityPlaceHolder}
+          placeholder={props.itemData.quantityPlaceHolder}
           type="quantity"
           required
           id="quantity"
         />
       </div>
       <div className={classes.control}>
-        <label htmlFor="price">{props.vegetableData.priceLabel}</label>
+        <label htmlFor="price">{props.itemData.priceLabel}</label>
         <input
-          placeholder={props.vegetableData.pricePlaceHolder}
+          placeholder={props.itemData.pricePlaceHolder}
           type="number"
           required
           id="price"
         />
       </div>
       <div className={classes.control}>
-        <label htmlFor="picture">{props.vegetableData.pictureLabel}</label>
+        <label htmlFor="picture">{props.itemData.pictureLabel}</label>
         <input type="file" required id="picture" />
       </div>
       <div className={classes.control}>
-        <label htmlFor="description">{props.vegetableData.descriptionLabel}</label>
+        <label htmlFor="description">{props.itemData.descriptionLabel}</label>
         <textarea
-          placeholder={props.vegetableData.descriptionPlaceHolder}
+          placeholder={props.itemData.descriptionPlaceHolder}
           id="description"
           required
           rows="5"
         />
       </div>
       <div className={classes.actions}>
-        <button>{props.vegetableData.buttonLabel}</button>
+        <button>{props.itemData.buttonLabel}</button>
       </div>
     </form>
     </div>

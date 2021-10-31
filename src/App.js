@@ -9,37 +9,26 @@ import Farm from "./pages/user-pages/Farm";
 import RegistrationForm from "./pages/RegistrationForm";
 import Orders from "./pages/user-pages/Orders";
 import Adoptions from "./pages/user-pages/Adoptions";
+import ProtectedFarmerRoute from "./components/protected-routes/ProtectedCustomerRoute";
+import ProtectedCustomerRoute from "./components/protected-routes/ProtectedFarmerRoute";
 
 function App() {
   return (
     <Switch>
-      <Route path="/" exact>
-        <RegistrationForm />
-      </Route>
-      <Route path="/profile">
-        <Profile />
-      </Route>
-      <Route path="/dashboard">
-        <Dashboard />
-      </Route>
-      <Route path="/vegetables">
-        <Vegetables />
-      </Route>
-      <Route path="/trees">
-        <Trees />
-      </Route>
-      <Route path="/home">
-        <Home />
-      </Route>
-      <Route path="/farm/:farmId">
+      <Route path="/" exact component={RegistrationForm} />
+
+      <ProtectedFarmerRoute path="/profile" component={Profile} />
+      <ProtectedFarmerRoute path="/dashboard" component={Dashboard} />
+      <ProtectedFarmerRoute path="/vegetables" component={Vegetables} />
+      <ProtectedFarmerRoute path="/trees" component={Trees} />
+      <ProtectedCustomerRoute path="/home" component={Home} />
+      <ProtectedCustomerRoute path="/farm/:farmId" component={Farm} />
+      {/* <Route path="/farm/:farmId">
         <Farm />
-      </Route>
-      <Route path="/orders">
-        <Orders />
-      </Route>
-      <Route path="/adoptions">
-        <Adoptions />
-      </Route>
+      </Route> */}
+      <ProtectedCustomerRoute path="/orders" component={Orders} />
+      <ProtectedCustomerRoute path="/adoptions" component={Adoptions} />
+      
     </Switch>
   );
 }

@@ -19,7 +19,7 @@ function ItemCard(props) {
         />
         <CardHeader
           title={props.name}
-          subheader={props.price}
+          subheader= {"$"+props.price}
           action={
             <Avatar sx={{ bgcolor: "#F2AB50" }} aria-label="recipe">
               <Typography>{props.quantity}</Typography>

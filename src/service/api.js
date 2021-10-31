@@ -18,5 +18,11 @@ export default{
     axios.post(`${BASE_URL}/login`, loginData),
 
     checkSignup: (signupData) =>
-    axios.post(`${BASE_URL}/register`, signupData)
+    axios.post(`${BASE_URL}/register`, signupData),
+
+    getFarmerVegetables: () =>
+    axios.get(`${BASE_URL}/get_vegetables`, token),
+
+    getFarmerTrees: () =>
+    axios.get(`${BASE_URL}/get_trees`, token),
 }
