@@ -23,7 +23,7 @@ function ProfileCard(props) {
           subheader={props.owner}
           action={
             <Typography style={{ paddingTop: "34px", paddingRight: "15px" }}>
-              Tannourine
+              {props.location}
             </Typography>
           }
         ></CardHeader>

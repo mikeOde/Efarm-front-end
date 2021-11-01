@@ -1,30 +1,38 @@
+import { useState, useEffect } from "react";
 import ProfileCard from "../../components/admin-components/profile/ProfileCard";
 import AdminLayout from "../../components/layout/admin-layout/AdminLayout";
+import api from "../../service/api";
 
 function Profile() {
-  const DUMMY_DATA = [
-    {
-      id: "1",
-      name: "Mike's Farm",
-      image:
-        "https://cib.bnpparibas/app/uploads/sites/2/2018/10/2440-une-left.jpeg",
-      description:
-        "Mike's Farm is a Vegetables and trees farm that is located at the highlands of North Lebanon. At an altitude of 1800m, with no pollution sources of any kind, Mike's Farm drinks the most clean waters and we emphasise on that by growing our goods organically",
-      owner: "Mike Ayoub",
-    },
-  ];
+  const [fetchedProfileData, setFetchedProfileData] = useState([]);
+  const [fetchedProfileOwner, setFetchedProfileOwner] = useState("");
+  useEffect(() => {
+    const profileData = () => {
+      api.getFarmerProfile().then((response) => {
+        console.log(response);
+        setFetchedProfileData(response.data[0]);
+        setFetchedProfileOwner(response.data.owner_name);
+      })
+      // The routes are already protected
+      .catch((error) => {
+        console.log(error);
+      });
+    };
+    profileData();
+  }, []);
+  console.log(fetchedProfileData);
+
   return (
     <AdminLayout>
-      {DUMMY_DATA.map((profile) => (
-        <ProfileCard
-          key={profile.id}
-          id={profile.id}
-          description={profile.description}
-          name={profile.name}
-          image={profile.image}
-          owner={profile.owner}
-        />
-      ))}
+      <ProfileCard
+        description={
+          fetchedProfileData ? fetchedProfileData.description : "Description"
+        }
+        name={fetchedProfileData ? fetchedProfileData.name : "Farm name"}
+        image={fetchedProfileData ? fetchedProfileData.image : "Image"}
+        location={fetchedProfileData ? fetchedProfileData.location : "Location"}
+        owner={fetchedProfileOwner}
+      />
     </AdminLayout>
   );
 }

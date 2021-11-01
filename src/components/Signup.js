@@ -1,3 +1,4 @@
+import * as React from "react";
 import { useRef, useState } from "react";
 import { Button, Grid, Paper, TextField } from "@mui/material";
 import Radio from "@mui/material/Radio";
@@ -11,7 +12,6 @@ import api from "../service/api";
 function Signup() {
   const firstNameInputRef = useRef();
   const lastNameInputRef = useRef();
-  const userTypeInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const [errors, setErrors] = useState([]);
@@ -20,17 +20,16 @@ function Signup() {
     event.preventDefault();
     const enteredFirstName = firstNameInputRef.current.value;
     const enteredLastName = lastNameInputRef.current.value;
-    const enteredUserType = userTypeInputRef.current.value;
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
     const signupData = {
       first_name: enteredFirstName,
       last_name: enteredLastName,
-      user_type_id: enteredUserType,
+      user_type_id: value,
       email: enteredEmail,
       password: enteredPassword,
     };
-
+    console.log(signupData);
     api
       .checkSignup(signupData, {
         headers: {
@@ -62,6 +61,10 @@ function Signup() {
   const logoStyle = { maxHeight: "100px", marginTop: "-25px" };
   const brandStyle = { color: "#516C66" };
 
+  const [value, setValue] = React.useState("0");
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
   return (
     <Paper elevation={20} style={paperStyle}>
       <Grid align="center">
@@ -107,27 +110,17 @@ function Signup() {
             aria-label="user type"
             defaultValue="Customer"
             name="user-type"
+            value={value}
+            onChange={handleChange}
           >
             <FormControlLabel
-              value="0" // 0 for customers
-              control={
-                <Radio
-                  inputRef={userTypeInputRef}
-                  color="success"
-                  size="small"
-                />
-              }
+              value="0"       // 0 for customers
+              control={<Radio color="success" size="small" />}
               label="Customer"
             />
             <FormControlLabel
-              value="1" // 1 for farmers
-              control={
-                <Radio
-                  inputRef={userTypeInputRef}
-                  color="success"
-                  size="small"
-                />
-              }
+              value="1"       // 1 for farmers
+              control={<Radio color="success" size="small" />}
               label="Farmer"
             />
           </RadioGroup>

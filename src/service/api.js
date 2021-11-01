@@ -12,7 +12,7 @@ const token = {
     },
 }
 
-export default{
+const api = {
 
     checkLogin: (loginData) =>
     axios.post(`${BASE_URL}/login`, loginData),
@@ -25,4 +25,17 @@ export default{
 
     getFarmerTrees: () =>
     axios.get(`${BASE_URL}/get_trees`, token),
+
+    getFarmerProfile: () =>
+    axios.get(`${BASE_URL}/profile`, token),
+    
+    editFarmerProfile: (editProfileData) =>
+    axios.post(`${BASE_URL}/edit_profile`, editProfileData, token),
+    
+    addVegetable: (addItemData) =>
+    axios.post(`${BASE_URL}/add_vegetables`, addItemData, token),
+
+    addTree: (addItemData) =>
+    axios.post(`${BASE_URL}/add_trees`, addItemData, token)
 }
+export default api;

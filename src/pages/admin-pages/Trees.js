@@ -9,22 +9,23 @@ import api from "../../service/api";
 function Trees() {
   const history = useHistory();
   const [fetchedTrees, setFetchedTrees] = useState([]);
-  const allTrees = () => {
-    api
-      .getFarmerTrees()
-      .then((response) => {
-        console.log(response);
-        setFetchedTrees(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-        history.push("/");
-        window.location.reload();
-      });
-  };
   useEffect(() => {
+    const allTrees = () => {
+      api
+        .getFarmerTrees()
+        .then((response) => {
+          console.log(response);
+          setFetchedTrees(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+          history.push("/");
+          window.location.reload();
+        });
+    };
+
     allTrees();
-  }, []);
+  }, [history]);
 
   const formData = {
     title: "ADD TREES",
