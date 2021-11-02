@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/mikeOde/Efarm-front-end.git/static/css/main.90b52695.chunk.css",
+    "main.js": "/mikeOde/Efarm-front-end.git/static/js/main.9d1abe51.chunk.js",
+    "main.js.map": "/mikeOde/Efarm-front-end.git/static/js/main.9d1abe51.chunk.js.map",
+    "runtime-main.js": "/mikeOde/Efarm-front-end.git/static/js/runtime-main.81f2b1df.js",
+    "runtime-main.js.map": "/mikeOde/Efarm-front-end.git/static/js/runtime-main.81f2b1df.js.map",
+    "static/css/2.c1256375.chunk.css": "/mikeOde/Efarm-front-end.git/static/css/2.c1256375.chunk.css",
+    "static/js/2.7c8c3612.chunk.js": "/mikeOde/Efarm-front-end.git/static/js/2.7c8c3612.chunk.js",
+    "static/js/2.7c8c3612.chunk.js.map": "/mikeOde/Efarm-front-end.git/static/js/2.7c8c3612.chunk.js.map",
+    "index.html": "/mikeOde/Efarm-front-end.git/index.html",
+    "static/css/2.c1256375.chunk.css.map": "/mikeOde/Efarm-front-end.git/static/css/2.c1256375.chunk.css.map",
+    "static/css/main.90b52695.chunk.css.map": "/mikeOde/Efarm-front-end.git/static/css/main.90b52695.chunk.css.map",
+    "static/js/2.7c8c3612.chunk.js.LICENSE.txt": "/mikeOde/Efarm-front-end.git/static/js/2.7c8c3612.chunk.js.LICENSE.txt",
+    "static/media/loginLogo.bba5023c.png": "/mikeOde/Efarm-front-end.git/static/media/loginLogo.bba5023c.png",
+    "static/media/navLogo.1bf254b4.png": "/mikeOde/Efarm-front-end.git/static/media/navLogo.1bf254b4.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.81f2b1df.js",
+    "static/css/2.c1256375.chunk.css",
+    "static/js/2.7c8c3612.chunk.js",
+    "static/css/main.90b52695.chunk.css",
+    "static/js/main.9d1abe51.chunk.js"
+  ]
+}
