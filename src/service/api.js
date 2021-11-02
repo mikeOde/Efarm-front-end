@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://efarm.ml/api';
-
+// const BASE_URL = 'https://efarm.ml/api';
+const BASE_URL = 'http://127.0.0.1:8000/api';
 const cookie = localStorage.getItem('access_token'); // gets the token that is saved in the local storage
 
 const token = {
@@ -35,7 +35,13 @@ const api = {
     addVegetable: (addItemData) =>
     axios.post(`${BASE_URL}/add_vegetables`, addItemData, token),
 
+    deleteVegetable: (deleteItemData) =>
+    axios.post(`${BASE_URL}/delete_vegetable`, deleteItemData, token),
+
     addTree: (addItemData) =>
-    axios.post(`${BASE_URL}/add_trees`, addItemData, token)
+    axios.post(`${BASE_URL}/add_trees`, addItemData, token),
+
+    deleteTree: (deleteItemData) =>
+    axios.post(`${BASE_URL}/delete_tree`, deleteItemData, token),
 }
 export default api;
