@@ -16,6 +16,7 @@ function ItemList(props) {
           quantity={item.quantity}
           name={item.name}
           type={props.itemType}
+          deleteAction={props.getFunction} 
         />
       ))}
     </Grid>

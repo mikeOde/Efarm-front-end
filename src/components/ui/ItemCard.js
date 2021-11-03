@@ -27,8 +27,7 @@ function ItemCard(props) {
         })
         .then((response) => {
           if (response.data.status) {
-            window.location.reload();
-            console.log(response);
+            props.deleteAction(); //get items api call
           }
         });
     } else {
@@ -41,12 +40,11 @@ function ItemCard(props) {
         })
         .then((response) => {
           if (response.data.status) {
-            window.location.reload();
-            console.log(response);
+            props.deleteAction();
           }
         });
     }
-  }
+  };
   return (
     <Grid item xs={12} sm={6} lg={4}>
       <Card elevation={7}>

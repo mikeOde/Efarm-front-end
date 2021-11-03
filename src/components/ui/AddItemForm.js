@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useRef } from "react";
+import { useHistory } from "react-router-dom";
 import { IconButton } from "@mui/material";
 import classes from "./AddItemForm.module.css";
 import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
@@ -11,7 +12,8 @@ function AddItemForm(props) {
   const itemPriceInputRef = useRef();
   const itemDescriptionInputRef = useRef();
   const itemPicInputRef = useRef();
-  const vegetableApi = props.itemData.isVegetable;  // if it's equal to one, request is coming from the Vegetables.js component
+  const vegetableApi = props.itemData.isVegetable; // if it's equal to one, request is coming from the Vegetables.js component
+  const history = useHistory();
 
   function addItemHandler(event) {
     event.preventDefault();
@@ -42,8 +44,26 @@ function AddItemForm(props) {
         })
         .then((response) => {
           if (response.data.status) {
-            window.location.reload();
-            // console.log(response);
+            props.addAction(); //allVegetables api call
+            props.closeAction(); //closes the Modal
+          }
+        })
+        .catch((error) => {
+          console.log(error.response.data.errors);
+          alert("Invalid data");
+        });
+    } else {
+      api
+        .addTree(addItemData, {
+          headers: {
+            Accept: "application/json",
+            "content-type": "application/json",
+          },
+        })
+        .then((response) => {
+          if (response.data.status) {
+            props.addAction(); //allTrees api call
+            props.closeAction(); //closes the Modal
           }
         })
         .catch((error) => {
@@ -51,25 +71,6 @@ function AddItemForm(props) {
           alert("Invalid data");
           window.location.reload();
         });
-    } else {
-      api
-      .addTree(addItemData, {
-        headers: {
-          Accept: "application/json",
-          "content-type": "application/json",
-        },
-      })
-      .then((response) => {
-        if (response.data.status) {
-          window.location.reload();
-          // console.log(response);
-        }
-      })
-      .catch((error) => {
-        console.log(error.response.data.errors);
-        alert("Invalid data");
-        window.location.reload();
-      });
     }
   }
   return (

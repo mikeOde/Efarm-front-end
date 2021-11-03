@@ -9,7 +9,7 @@ import api from "../../service/api";
 function Trees() {
   const history = useHistory();
   const [fetchedTrees, setFetchedTrees] = useState([]);
-  useEffect(() => {
+  
     const allTrees = () => {
       api
         .getFarmerTrees()
@@ -23,7 +23,7 @@ function Trees() {
           window.location.reload();
         });
     };
-
+    useEffect(() => {
     allTrees();
   }, [history]);
 
@@ -43,8 +43,8 @@ function Trees() {
 
   return (
     <AdminLayout>
-      <ItemList items={fetchedTrees} />
-      <AddItemButton data={formData} />
+      <ItemList items={fetchedTrees} getFunction={allTrees}/>
+      <AddItemButton data={formData} getFunction={allTrees}/>
     </AdminLayout>
   );
 }
