@@ -26,7 +26,7 @@ function FarmCard(props) {
             title={props.name}
             subheader={props.owner}
             action={
-              <Typography style={{ paddingTop: "34px" }}>Tannourine</Typography>
+              <Typography style={{ paddingTop: "34px" }}>{props.location}</Typography>
             }
           ></CardHeader>
         </CardActionArea>

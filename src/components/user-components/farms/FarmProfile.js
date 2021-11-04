@@ -3,7 +3,6 @@ import React from 'react';
 import classes from './FarmProfile.module.css';
 
 function FarmProfile(props) {
-    console.log(props.data);
     return (
         <Grid item xs={12}>
           <Card className={classes.profileCard}>
@@ -15,7 +14,7 @@ function FarmProfile(props) {
             />
             <CardHeader 
             title={<Typography variant="h3">{props.data.name}</Typography>}  
-            subheader={props.data.owner} 
+            subheader={props.data.first_name + " " + props.data.last_name} 
             action={
               <Typography style={{ paddingTop: "25px" }}>Tannourine</Typography>
             }

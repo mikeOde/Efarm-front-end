@@ -35,7 +35,7 @@ function Login() {
           localStorage.setItem("user_name", fullName);
           localStorage.setItem("access_token", response.data.access_token);
           localStorage.setItem("user_type", response.data.user.user_type_id);
-          history.push("/dashboard");
+          history.push("/profile");
         } else {
           localStorage.setItem("user_name", fullName);
           localStorage.setItem("access_token", response.data.access_token);
