@@ -67,7 +67,7 @@ function FarmProducts(props) {
   const treeData = {
     owner_id: props.farmId,
   };
-  console.log(treeData);
+
   const allTrees = () => {
     api
       .getCustomerTrees(treeData, {
@@ -77,7 +77,6 @@ function FarmProducts(props) {
         },
       })
       .then((response) => {
-        console.log(response);
         setFetchedTrees(response.data);
       })
       .catch((error) => {
@@ -95,7 +94,7 @@ function FarmProducts(props) {
   const vegetableData = {
     owner_id: props.farmId,
   };
-  console.log(vegetableData);
+
   const allVegetables = () => {
     api
       .getCustomerVegetables(vegetableData, {
@@ -105,11 +104,9 @@ function FarmProducts(props) {
         },
       })
       .then((response) => {
-        console.log(response);
         setFetchedVegetables(response.data);
       })
       .catch((error) => {
-        console.log(error);
         history.push("/");
       });
   };
@@ -117,87 +114,6 @@ function FarmProducts(props) {
   useEffect(() => {
     allVegetables();
   }, [history]);
-
-  // const trees = [
-  //   {
-  //     id: "1",
-  //     name: "Apple trees",
-  //     image:
-  //       "https://www.nature-and-garden.com/wp-content/uploads/sites/4/2018/10/apple-tree.jpg",
-  //     price: "$25",
-  //     description:
-  //       "These Apple trees are raised outdoors and fed organic fertilizers only",
-  //     quantity: "24",
-  //   },
-  //   {
-  //     id: "2",
-  //     name: "Cherry trees",
-  //     image:
-  //       "https://gardenerspath.com/wp-content/uploads/2019/07/How-to-Grow-and-Care-for-Fruiting-Cherry-Trees-Cover.jpg",
-  //     price: "$27",
-  //     description:
-  //       "National Cherry trees outdoor drown on 1500m elevation with minimum pesticides",
-  //     quantity: "13",
-  //   },
-  //   {
-  //     id: "3",
-  //     name: "Peach trees",
-  //     image:
-  //       "https://www.garden.eco/wp-content/uploads/2018/06/how-to-grow-a-peach-tree.jpg",
-  //     price: "$25",
-  //     description: "Medium sized potatoes, with no additional fertilizers",
-  //     quantity: "37",
-  //   },
-  //   {
-  //     id: "4",
-  //     name: "Olive trees",
-  //     image: "https://www.trees.com/wp-content/uploads/2019/11/olive-tree.jpg",
-  //     price: "$12",
-  //     description: "Round reddish onions that are fertilizer fed",
-  //     quantity: "70",
-  //   },
-  // ];
-
-  // const vegetables = [
-  //   {
-  //     id: "1",
-  //     name: "Cucumbers",
-  //     image:
-  //       "https://cdn.plantssparkjoy.com/wp-content/uploads/2021/09/02071046/growing-cucumbers-with-plants-spark-joy.jpeg",
-  //     price: "$12",
-  //     description:
-  //       "These Cucumbers are raised outdoors and fed organic fertilizers only",
-  //     quantity: "5kg",
-  //   },
-  //   {
-  //     id: "2",
-  //     name: "Tomatoes",
-  //     image:
-  //       "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-  //     price: "$15",
-  //     description:
-  //       "National tomatoes outdoor drown on 1500m elevation with minimum pesticides",
-  //     quantity: "4kg",
-  //   },
-  //   {
-  //     id: "3",
-  //     name: "Potatoes",
-  //     image:
-  //       "https://www.vanmeuwen.com/static-images/master/static-images/how-to-grow-potatoes/how-to-plant-grow-potatoes.jpg",
-  //     price: "$10",
-  //     description: "Medium sized potatoes, with no additional fertilizers",
-  //     quantity: "10kg",
-  //   },
-  //   {
-  //     id: "4",
-  //     name: "Onions",
-  //     image:
-  //       "https://jainsusa.com/wp-content/uploads/2015/02/5tips_to_grow_great_onions.jpg",
-  //     price: "$12",
-  //     description: "Round reddish onions that are fertilizer fed",
-  //     quantity: "7kg",
-  //   },
-  // ];
 
   return (
     <Box sx={{ bgcolor: "background.black", width: "100%" }}>

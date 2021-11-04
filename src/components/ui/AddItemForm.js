@@ -47,7 +47,7 @@ function AddItemForm(props) {
           }
         })
         .catch((error) => {
-          console.log(error.response.data.errors);
+          console.log(error);
           alert("Invalid data");
         });
     } else {
