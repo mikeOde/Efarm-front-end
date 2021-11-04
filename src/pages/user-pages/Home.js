@@ -20,6 +20,7 @@ function Home() {
         history.push("/");
       });
   };
+  console.log(fetchedFarms)
   
   useEffect(() => {
     allFarms();

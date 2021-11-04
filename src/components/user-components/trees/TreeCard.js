@@ -41,11 +41,11 @@ function TreeCard(props) {
           component="img"
           height="194"
           image={props.image}
-          alt={props.name}
+          alt={props.farm_name}
         />
         <CardHeader
-          title={props.name}
-          subheader={props.price}
+          title={props.farm_name}
+          subheader={"$" + props.price}
           action={
             <Avatar sx={{ bgcolor: "#F2AB50" }} aria-label="recipe">
               <Typography>{props.quantity}</Typography>

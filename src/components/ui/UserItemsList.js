@@ -24,7 +24,7 @@ function UserItemsList(props) {
               <CardHeader
                 sx={{ backgroundColor: "#ffffff" }}
                 title={item.name}
-                subheader={item.price}
+                subheader={"$" + props.price}
                 action={
                   <Avatar
                     sx={{ bgcolor: "#F2AB50", marginTop: "70%" }}
@@ -37,8 +37,12 @@ function UserItemsList(props) {
               <CardContent
                 sx={{ flex: "1 0 auto", backgroundColor: "#ffffff" }}
               >
-                <Typography component="div" style={{color: "#516c66"}} variant="h6">
-                  {item.farm}
+                <Typography
+                  component="div"
+                  style={{ color: "#516c66" }}
+                  variant="h6"
+                >
+                  {item.farm_name}
                 </Typography>
                 <Typography
                   variant="body1"
