@@ -25,7 +25,7 @@ const VegetablesEarningsData = {
   title: "Total",
   total: "245",
   subtitle: "USD",
-  body: "Total earnings of vegetables adopted",
+  body: "Total earnings of boxes ordered",
 };
 
 const treesChartData = {
@@ -42,10 +42,10 @@ const treesChartData = {
 const vegetablesChartData = {
   chartData: [
     ["Vegetables", "Boxes"],
-    ["Tomato boxes", 25],
-    ["Cucumber boxes", 45],
-    ["Potato Boxes", 13],
-    ["Onion Boxes", 7],
+    ["Tomato", 25],
+    ["Cucumber", 45],
+    ["Potato", 13],
+    ["Onion", 7],
   ],
   title: "My vegetables adoptions",
 };
