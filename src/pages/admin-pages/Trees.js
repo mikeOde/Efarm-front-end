@@ -9,42 +9,49 @@ import api from "../../service/api";
 function Trees() {
   const history = useHistory();
   const [fetchedTrees, setFetchedTrees] = useState([]);
-  
-    const allTrees = () => {
-      api
-        .getFarmerTrees()
-        .then((response) => {
-          console.log(response);
-          setFetchedTrees(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-          history.push("/");
-          window.location.reload();
-        });
-    };
-    useEffect(() => {
+
+  const allTrees = () => {
+    api
+      .getFarmerTrees()
+      .then((response) => {
+        setFetchedTrees(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
     allTrees();
   }, [history]);
 
+  const cardData = {
+    subtitle: "Trees number",
+    avatar: "",
+  };
+
   const formData = {
-    title: "ADD TREES",
+    title: "TREES",
     nameLabel: "Tree Name",
     namePlaceHolder: "Insert tree name",
-    quantityLabel: "Available Quantity",
+    quantityLabel: "Trees per adoption",
     quantityPlaceHolder: "Insert number of trees",
-    priceLabel: "Price per tree",
-    pricePlaceHolder: "Insert price per tree",
+    priceLabel: "Adoption price",
+    pricePlaceHolder: "Insert price per adoption",
     pictureLabel: "Tree Picture",
     descriptionLabel: "Description",
     descriptionPlaceHolder: "Insert a brief description",
-    buttonLabel: "ADD TREE",
+    buttonLabel: "TREE",
   };
 
   return (
     <AdminLayout>
-      <ItemList items={fetchedTrees} getFunction={allTrees}/>
-      <AddItemButton data={formData} getFunction={allTrees}/>
+      <ItemList
+        items={fetchedTrees}
+        data={cardData}
+        getFunction={allTrees}
+        editData={formData}
+      />
+      <AddItemButton data={formData} getFunction={allTrees} />
     </AdminLayout>
   );
 }

@@ -8,21 +8,21 @@ import api from "../../service/api";
 function Adoptions() {
   const [fetchedAdoptions, setFetchedAdoptions] = useState([]);
   const history = useHistory();
+  const cardData = {
+    subtitle: "Trees number",
+    unit: "",
+  };
 
   const allAdoptions = () => {
     api
       .getCustomerAdoptions()
       .then((response) => {
-        console.log(response);
         setFetchedAdoptions(response.data);
       })
       .catch((error) => {
         console.log(error);
-        history.push("/");
       });
   };
-
-  console.log(fetchedAdoptions);
 
   useEffect(() => {
     allAdoptions();
@@ -30,7 +30,7 @@ function Adoptions() {
 
   return (
     <UserLayout>
-      <UserItemsList items={fetchedAdoptions} />
+      <UserItemsList items={fetchedAdoptions} data={cardData} />
     </UserLayout>
   );
 }

@@ -6,6 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import { Avatar, Button, Grid } from "@mui/material";
+import EditItemButton from "./EditItemButton";
 import api from "../../service/api";
 
 function ItemCard(props) {
@@ -58,9 +59,14 @@ function ItemCard(props) {
           title={props.name}
           subheader={"$" + props.price}
           action={
+            <div >
+            <Typography variant="caption">
+              {props.subtitle}
+            </Typography>
             <Avatar sx={{ bgcolor: "#F2AB50" }} aria-label="recipe">
-              <Typography>{props.quantity}</Typography>
+              <Typography>{props.quantity}{props.avatar}</Typography>
             </Avatar>
+            </div>
           }
         ></CardHeader>
         <CardContent>
@@ -69,6 +75,7 @@ function ItemCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
+          <EditItemButton data={props.editForm} editItemId={props.id} action={props.editAction} />
           <Button
             size="medium"
             color="error"

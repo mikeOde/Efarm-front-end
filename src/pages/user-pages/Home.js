@@ -17,10 +17,8 @@ function Home() {
       })
       .catch((error) => {
         console.log(error);
-        history.push("/");
       });
   };
-  console.log(fetchedFarms)
   
   useEffect(() => {
     allFarms();

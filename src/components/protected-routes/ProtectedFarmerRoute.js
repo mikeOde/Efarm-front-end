@@ -1,16 +1,16 @@
 import React from 'react';
 import { Redirect, Route } from "react-router-dom";
 
-function ProtectedCustomerRoute({ component: Component, ...restOfProps }) {
+function ProtectedFarmerRoute({ component: Component, ...restOfProps }) {
     const userType = localStorage.getItem("user_type");
     return (
         <Route
       {...restOfProps}
       render={(props) =>
-        userType === '0' ? <Component {...props} /> : <Redirect to="/" />
+        userType === '1' ? <Component {...props} /> : <Redirect to="/" />
       }
     />
     );
 }
 
-export default ProtectedCustomerRoute;
+export default ProtectedFarmerRoute;

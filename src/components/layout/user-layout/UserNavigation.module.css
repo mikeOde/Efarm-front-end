@@ -4,7 +4,7 @@
   color: #ffffff;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out;
-  margin-right: 12%;
+  margin-right: 8%;
 }
 
 .navList:hover,
@@ -14,7 +14,7 @@
 }
 
 .NavBrand {
-  padding-right: 3rem;
+  padding-right: 2rem;
 }
 
 

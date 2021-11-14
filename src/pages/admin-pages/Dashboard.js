@@ -1,7 +1,11 @@
 import { Grid, Typography } from "@mui/material";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import CustomersList from "../../components/admin-components/dashboard/CustomersList";
 import PieChart from "../../components/admin-components/dashboard/PieChart";
 import TotalCard from "../../components/admin-components/dashboard/TotalCard";
 import AdminLayout from "../../components/layout/admin-layout/AdminLayout";
+import api from "../../service/api";
 
 const treesNumbersData = {
   title: "Total",
@@ -31,10 +35,12 @@ const VegetablesEarningsData = {
 const treesChartData = {
   chartData: [
     ["Trees", "Adoptions"],
-    ["Apple", 23],
-    ["Peach", 15],
-    ["Cherry", 50],
+    ["Plum", 23],
+    ["Kiwi", 15],
+    ["Pomegranate", 50],
     ["Olive", 35],
+    ["Orange", 45],
+    ["lemon", 35],
   ],
   title: "My trees adoptions",
 };
@@ -42,15 +48,37 @@ const treesChartData = {
 const vegetablesChartData = {
   chartData: [
     ["Vegetables", "Boxes"],
-    ["Tomato", 25],
-    ["Cucumber", 45],
-    ["Potato", 13],
-    ["Onion", 7],
+    ["Broccoli", 25],
+    ["Radish", 45],
+    ["Carrots", 13],
+    ["Eggplants", 7],
+    ["Cabbage", 17],
+    ["Lettuce", 18],
   ],
   title: "My vegetables adoptions",
 };
 
 function Dashboard() {
+  const [fetchedCustomers, setFetchedCustomers] = useState([]);
+  const history = useHistory();
+
+  const allCustomers = () => {
+    api
+      .getCustomers()
+      .then((response) => {
+        console.log(response);
+        setFetchedCustomers(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(fetchedCustomers);
+  };
+
+  useEffect(() => {
+    allCustomers();
+  }, [history]);
+
   return (
     <AdminLayout>
       <Grid container spacing={3}>
@@ -69,7 +97,12 @@ function Dashboard() {
           </Grid>
           <TotalCard data={VegetablesNumbersData} />
           <TotalCard data={VegetablesEarningsData} />
-          <PieChart data={vegetablesChartData}/>
+          <PieChart data={vegetablesChartData} />
+        </Grid>
+
+        <Grid item xs={12}>
+          <Typography variant="h5">Customers</Typography>
+          <CustomersList customers={fetchedCustomers} />
         </Grid>
       </Grid>
     </AdminLayout>

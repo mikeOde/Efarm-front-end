@@ -14,37 +14,45 @@ function Vegetables() {
     api
       .getFarmerVegetables()
       .then((response) => {
-        console.log(response);
         setFetchedVegetables(response.data);
       })
       .catch((error) => {
         console.log(error);
-        history.push("/");
       });
   };
   useEffect(() => {
     allVegetables();
   }, [history]);
-  console.log(fetchedVegetables);
+
+  const cardData = {
+    subtitle: "Box weight",
+    avatar: "kg",
+  };
 
   const formData = {
-    title: "ADD VEGETABLES",
+    title: "VEGETABLES",
     nameLabel: "Vegetable Name",
     namePlaceHolder: "Insert vegetable name",
     quantityLabel: "Box Weight",
     quantityPlaceHolder: "Insert vegetable weight per box",
-    priceLabel: "Price per Kg",
+    priceLabel: "Price box",
     pricePlaceHolder: "Insert price per box",
     pictureLabel: "Vegetable Picture",
     descriptionLabel: "Description",
     descriptionPlaceHolder: "Insert a brief description",
-    buttonLabel: "ADD VEGETABLE",
+    buttonLabel: "VEGETABLE",
     isVegetable: "1", //to be used as a condition in the addItemForm.js
   };
 
   return (
     <AdminLayout>
-      <ItemList items={fetchedVegetables} itemType={formData.isVegetable} getFunction={allVegetables} />
+      <ItemList
+        items={fetchedVegetables}
+        data={cardData}
+        itemType={formData.isVegetable}
+        getFunction={allVegetables}
+        editData={formData}
+      />
       <AddItemButton data={formData} getFunction={allVegetables} />
     </AdminLayout>
   );
