@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import classes from "./UserNavigation.module.css";
 import { Button } from "@mui/material";
 import navLogo from "../../images/navLogo.png";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 function UserNavigation() {
   let userName = localStorage.getItem("user_name");
@@ -14,7 +14,7 @@ function UserNavigation() {
     <Navbar collapseOnSelect variant="dark" expand="lg" className="nav-bg">
       <Container>
         <Navbar.Brand href="" className={classes.NavBrand}>
-        <img src={navLogo} alt="logo" style={logoStyle} />
+          <img src={navLogo} alt="logo" style={logoStyle} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

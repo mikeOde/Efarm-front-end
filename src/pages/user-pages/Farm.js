@@ -44,7 +44,7 @@ function Farm() {
   return (
     <UserLayout>
       <FarmProfile data={farmData} />
-      <FarmProducts farmId={id}/>
+      <FarmProducts farmId={id} />
     </UserLayout>
   );
 }

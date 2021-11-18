@@ -20,6 +20,7 @@ function App() {
   return (
     <Switch>
       <Route path="/" exact component={RegistrationForm} />
+      
       <ProtectedFarmerRoute path="/profile" component={Profile} />
       <ProtectedFarmerRoute path="/dashboard" component={Dashboard} />
       <ProtectedFarmerRoute path="/vegetables" component={Vegetables} />
@@ -33,7 +34,6 @@ function App() {
       <ProtectedCustomerRoute path="/orders" component={Orders} />
       <ProtectedCustomerRoute path="/adoptions" component={Adoptions} />
       <ProtectedCustomerRoute path="/cart" component={Cart} />
-      
     </Switch>
   );
 }

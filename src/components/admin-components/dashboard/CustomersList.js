@@ -9,7 +9,6 @@ import Avatar from "@mui/material/Avatar";
 import { Card } from "@mui/material";
 
 function CustomersList(props) {
-  console.log(props.customers);
   return (
     <Card sx={{ marginTop: "25px" }} elevation={7}>
       <List dense sx={{ width: "100%", bgcolor: "background.paper" }}>

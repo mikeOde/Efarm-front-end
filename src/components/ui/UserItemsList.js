@@ -27,15 +27,15 @@ function UserItemsList(props) {
                 subheader={"$" + item.price}
                 action={
                   <div>
-                    <Typography sx={{marginTop: "10%"}}>
+                    <Typography sx={{ marginTop: "10%" }}>
                       {props.data.subtitle}
-                      </Typography>
-                  <Avatar
-                    sx={{ bgcolor: "#F2AB50", marginTop: "10%" }}
-                    aria-label="recipe"
-                  >
-                    <Typography>{item.quantity}</Typography>
-                  </Avatar>
+                    </Typography>
+                    <Avatar
+                      sx={{ bgcolor: "#F2AB50", marginTop: "10%" }}
+                      aria-label="recipe"
+                    >
+                      <Typography>{item.quantity}</Typography>
+                    </Avatar>
                   </div>
                 }
               ></CardHeader>

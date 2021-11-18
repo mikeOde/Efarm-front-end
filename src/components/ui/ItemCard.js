@@ -11,14 +11,11 @@ import api from "../../service/api";
 
 function ItemCard(props) {
   function deleteHandler() {
-    console.log(props.type);
-    console.log(parseInt(props.id));
     const itemId = parseInt(props.id);
     const deleteItemData = {
       id: itemId,
     };
     if (props.type === "1") {
-      console.log("vegetable");
       api
         .deleteVegetable(deleteItemData, {
           headers: {
@@ -45,7 +42,7 @@ function ItemCard(props) {
           }
         });
     }
-  };
+  }
   return (
     <Grid item xs={12} sm={6} lg={4}>
       <Card elevation={7}>
@@ -59,13 +56,14 @@ function ItemCard(props) {
           title={props.name}
           subheader={"$" + props.price}
           action={
-            <div >
-            <Typography variant="caption">
-              {props.subtitle}
-            </Typography>
-            <Avatar sx={{ bgcolor: "#F2AB50" }} aria-label="recipe">
-              <Typography>{props.quantity}{props.avatar}</Typography>
-            </Avatar>
+            <div>
+              <Typography variant="caption">{props.subtitle}</Typography>
+              <Avatar sx={{ bgcolor: "#F2AB50" }} aria-label="recipe">
+                <Typography>
+                  {props.quantity}
+                  {props.avatar}
+                </Typography>
+              </Avatar>
             </div>
           }
         ></CardHeader>
@@ -75,7 +73,11 @@ function ItemCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <EditItemButton data={props.editForm} editItemId={props.id} action={props.editAction} />
+          <EditItemButton
+            data={props.editForm}
+            editItemId={props.id}
+            action={props.editAction}
+          />
           <Button
             size="medium"
             color="error"

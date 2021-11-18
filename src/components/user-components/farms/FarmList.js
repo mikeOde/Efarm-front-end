@@ -3,7 +3,6 @@ import React from "react";
 import FarmCard from "./FarmCard";
 
 function FarmList(props) {
-  
   return (
     <Grid container spacing={3}>
       {props.farms.map((farm) => (

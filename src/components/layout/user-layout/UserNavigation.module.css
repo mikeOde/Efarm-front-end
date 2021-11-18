@@ -1,3 +1,7 @@
+.NavBrand {
+  padding-right: 2rem;
+}
+
 .navList {
   text-decoration: none;
   font-size: 1.1rem;
@@ -10,11 +14,5 @@
 .navList:hover,
 .navList a:active,
 .navList a.active {
-  color: #EB961E;
+  color: #eb961e;
 }
-
-.NavBrand {
-  padding-right: 2rem;
-}
-
-

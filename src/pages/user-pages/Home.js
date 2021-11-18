@@ -19,11 +19,11 @@ function Home() {
         console.log(error);
       });
   };
-  
+
   useEffect(() => {
     allFarms();
   }, [history]);
-  
+
   return (
     <UserLayout>
       <FarmList farms={fetchedFarms} />

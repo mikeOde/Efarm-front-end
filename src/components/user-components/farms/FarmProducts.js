@@ -84,7 +84,7 @@ function FarmProducts(props) {
         history.push("/");
       });
   };
-  
+
   useEffect(() => {
     allTrees();
   }, [history]);
@@ -110,7 +110,7 @@ function FarmProducts(props) {
         history.push("/");
       });
   };
-  
+
   useEffect(() => {
     allVegetables();
   }, [history]);

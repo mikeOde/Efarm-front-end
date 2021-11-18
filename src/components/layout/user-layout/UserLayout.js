@@ -6,7 +6,7 @@ function UserLayout(props) {
   return (
     <section>
       <UserNavigation />
-      <Grid container style={{padding: "0px"}}>
+      <Grid container style={{ padding: "0px" }}>
         <Container>{props.children}</Container>
       </Grid>
     </section>

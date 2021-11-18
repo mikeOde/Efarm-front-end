@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-// const BASE_URL = 'https://efarm.ml/api';
 const BASE_URL = 'http://127.0.0.1:8000/api';
-const cookie = localStorage.getItem('access_token'); // gets the token that is saved in the local storage
+const cookie = localStorage.getItem('access_token'); 
 
 const token = {
     headers: {

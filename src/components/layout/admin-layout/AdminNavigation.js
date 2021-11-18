@@ -5,9 +5,9 @@ import classes from "./AdminNavigation.module.css";
 import navLogo from "../../images/navLogo.png";
 
 function AdminNavigation() {
-  let userName = localStorage.getItem("user_name"); 
+  let userName = localStorage.getItem("user_name");
   const logoStyle = { maxHeight: "55px" };
-  
+
   return (
     <Navbar collapseOnSelect variant="dark" expand="lg" className="nav-bg">
       <Container>

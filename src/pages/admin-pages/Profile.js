@@ -11,11 +11,9 @@ function Profile() {
     api
       .getFarmerProfile()
       .then((response) => {
-        console.log(response);
         setFetchedProfileData(response.data[0]);
         setFetchedProfileOwner(response.data.owner_name);
       })
-      // The routes are already protected
       .catch((error) => {
         console.log(error);
       });
@@ -24,7 +22,6 @@ function Profile() {
   useEffect(() => {
     profileData();
   }, []);
-  console.log(fetchedProfileData);
 
   return (
     <AdminLayout>
@@ -32,7 +29,9 @@ function Profile() {
         description={
           fetchedProfileData ? fetchedProfileData.description : "Description"
         }
-        farm_name={fetchedProfileData ? fetchedProfileData.farm_name : "Farm name"}
+        farm_name={
+          fetchedProfileData ? fetchedProfileData.farm_name : "Farm name"
+        }
         image={fetchedProfileData ? fetchedProfileData.image : "Image"}
         location={fetchedProfileData ? fetchedProfileData.location : "Location"}
         owner={fetchedProfileOwner}

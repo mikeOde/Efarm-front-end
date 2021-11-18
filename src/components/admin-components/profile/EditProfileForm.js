@@ -21,7 +21,7 @@ function EditProfileForm(props) {
     const enteredFarmPic = farmPicInputRef.current.value;
     const enteredFarmDescription = farmDescriptionInputRef.current.value;
     const enteredFarmLatitude = farmLatitudeInputRef.current.value;
-    const enteredFarmLongitude = farmLongitudeInputRef.current.value;  
+    const enteredFarmLongitude = farmLongitudeInputRef.current.value;
 
     const editProfileData = {
       farm_name: enteredFarmName,
@@ -29,10 +29,9 @@ function EditProfileForm(props) {
       image: enteredFarmPic,
       description: enteredFarmDescription,
       lat: enteredFarmLatitude,
-      lng: enteredFarmLongitude
+      lng: enteredFarmLongitude,
     };
 
-    console.log(editProfileData);
     api
       .editFarmerProfile(editProfileData, {
         headers: {
